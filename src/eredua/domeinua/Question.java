@@ -2,7 +2,11 @@ package eredua.domeinua;
 
 import java.io.*;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.Entity;
+
 
 
 
@@ -36,7 +40,7 @@ public class Question implements Serializable {
 		this.question = query;
 		this.betMinimum=betMinimum;
 
-		//this.event = event;
+		this.event = event;
 	}
 
 	/**

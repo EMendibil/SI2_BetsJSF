@@ -4,7 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Vector;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
+
 
 
 
@@ -16,7 +24,8 @@ public class Event implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id @GeneratedValue
+	@Id 
+	@GeneratedValue
 	private Integer eventNumber;
 	private String description; 
 	private Date eventDate;
