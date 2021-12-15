@@ -19,7 +19,7 @@ public class FacadeBean {
 
 	private FacadeBean() {
 		try {
-			facadeInterface = new BLFacadeImplementation(new DataAccess());
+			facadeInterface = new BLFacadeImplementation(new DataAccessHibernate());
 		} catch (Exception e) {
 			System.out.println("FacadeBean: negozioaren logika sortzean errorea: " + e.getMessage());
 		}
