@@ -276,7 +276,16 @@ public void open(){
 
 public boolean existQuestion(Event event, String question) {
 	System.out.println(">> DataAccess: existQuestion=> event= "+event+" question= "+question);
-	Event ev = db.find(Event.class, event.getEventNumber());
+	
+	Session db = HibernateUtil.getSessionFactory().getCurrentSession();
+	
+	Query qy = db.createQuery("from Event where eventNumber= :eventZenb");
+	int zenb = event.getEventNumber();
+	qy.setParameter("eventZenb", zenb);
+	List evRes = qy.list();
+	
+	Event ev = (Event)evRes.get(0);
+	
 	return ev.DoesQuestionExists(question);
 	
 }
