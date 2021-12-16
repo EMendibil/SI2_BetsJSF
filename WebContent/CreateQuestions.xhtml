@@ -34,9 +34,7 @@
 			<div id="column">
 				<div id="container2">
 					<b>Events:</b><br></br>
-					<h:selectOneMenu id="zerrenda"
-						value="#{queryQuestionsBean.gertaera}"
-						converter="omnifaces.SelectItemsConverter">
+					<h:selectOneMenu id="zerrenda" value="#{queryQuestionsBean.gertaera}" converter="EventConverter">
 						<f:selectItems value="#{queryQuestionsBean.gertaerak}" />
 						<f:ajax event="change" listener="#{queryQuestionsBean.listener}"
 							render="" />

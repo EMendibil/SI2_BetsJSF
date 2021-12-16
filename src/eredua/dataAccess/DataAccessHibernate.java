@@ -187,13 +187,16 @@ public class DataAccessHibernate implements DataAccessInterface {
 		qy.setParameter("eventZenb", zenb);
 		List evRes = qy.list();
 		
+		
+		
 		Event ev = (Event)evRes.get(0);
+		
 			
 		if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
 			
 		db.getTransaction().begin();
 		Question q = ev.addQuestion(question, betMinimum);
-		//db.persist(q);
+		db.persist(q);
 		db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
 							// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 		db.getTransaction().commit();
@@ -219,7 +222,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 		List<Event> evRes = qy.list();
 		db.getTransaction().commit();
 		for (Event ev:evRes){
-	 	   System.out.println(ev.toString());		 
+	 	   System.out.println(ev.toString());
 		   res.add(ev);
 		  }
 	 	return res;

@@ -10,6 +10,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.event.SelectEvent;
 
+
 import eredua.businessLogic.BLFacade;
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
@@ -21,7 +22,7 @@ import eredua.exceptions.QuestionAlreadyExist;
 public class QueryQuestionsBean {
 
 	private BLFacade facadeBL; 
-	private List<Event> gertaerak = new Vector<Event>();
+	private static List<Event> gertaerak = new Vector<Event>();
 	private Event gertaera;
 	private List<Question> galderak = new Vector<Question>();
 	private Question galdera;
@@ -76,6 +77,14 @@ public class QueryQuestionsBean {
 	public void setGertaera(Event gertaera) {
 		this.gertaera = gertaera;
 	}
+	
+	public static Event getObject(String gertaera) {
+		for (Event e : gertaerak) {
+			if (gertaera.equals(e.getDescription()))
+				return e;
+		}
+		return null;
+	}
 
 	public void onDateSelect(SelectEvent event) {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Selected date: " + event.getObject()));
@@ -92,7 +101,6 @@ public class QueryQuestionsBean {
 
 	public void onQuestionSelect(SelectEvent event) {
 		this.galdera = (Question) event.getObject();
-		// Egia esan, selection="#{login.mota}" atributuarekin ere lortzen da
 		FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
 				new FacesMessage("Selected question: " + galdera.getQuestion()));
 	}
