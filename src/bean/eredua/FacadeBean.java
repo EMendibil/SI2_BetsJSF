@@ -8,9 +8,10 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.event.SelectEvent;
 
-import businessLogic.BLFacade;
-import businessLogic.BLFacadeImplementation;
-import dataAccess.DataAccess;
+import eredua.businessLogic.BLFacade;
+import eredua.businessLogic.BLFacadeImplementation;
+import eredua.dataAccess.DataAccessHibernate;
+
 
 public class FacadeBean {
 	private static FacadeBean singleton = new FacadeBean();

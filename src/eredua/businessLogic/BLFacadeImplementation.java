@@ -2,16 +2,15 @@ package eredua.businessLogic;
 //hola
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.Vector;
+import java.util.List;
 
-
-import configuration.ConfigXML;
-import dao.ObjectDbDAOManager;
-import dataAccess.DataAccessInterface;
+import eredua.configuration.ConfigXML;
+import eredua.dataAccess.DataAccessInterface;
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
-import exceptions.EventFinished;
-import exceptions.QuestionAlreadyExist;
+import eredua.exceptions.EventFinished;
+import eredua.exceptions.QuestionAlreadyExist;
+
 
 /**
  * It implements the business logic as a web service.
@@ -58,11 +57,11 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @throws EventFinished if current data is after data of the event
  	 * @throws QuestionAlreadyExist if the same question already exists for the event
 	 */
-   public domain.Question createQuestion(domain.Event event, String question, float betMinimum) throws EventFinished, QuestionAlreadyExist{
+   public Question createQuestion(Event event, String question, float betMinimum) throws EventFinished, QuestionAlreadyExist{
 	   
 	    //The minimum bed must be greater than 0
 		dbManager.open();
-		domain.Question qry=null;
+		Question qry=null;
 		
 	    
 		if(new Date().compareTo(event.getEventDate())>0)
@@ -82,9 +81,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	public Vector<domain.Event> getEvents(Date date)  {
+	public List<Event> getEvents(Date date)  {
 		dbManager.open();
-		Vector<domain.Event>  events=dbManager.getEvents(date);
+		List<Event>  events=dbManager.getEvents(date);
 		dbManager.close();
 		return events;
 	}
@@ -96,9 +95,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	public Vector<Date> getEventsMonth(Date date) {
+	public List<Date> getEventsMonth(Date date) {
 		dbManager.open();
-		Vector<Date>  dates=dbManager.getEventsMonth(date);
+		List<Date>  dates=dbManager.getEventsMonth(date);
 		dbManager.close();
 		return dates;
 	}
@@ -123,12 +122,6 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 	}
 
-	@Override
-	public domain.Question createQuestion(Event event, String question, float betMinimum)
-			throws EventFinished, QuestionAlreadyExist {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 

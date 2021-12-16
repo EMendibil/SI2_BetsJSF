@@ -1,11 +1,13 @@
 package eredua.dataAccess;
 
 import java.util.Date;
-import java.util.Vector;
+import java.util.List;
 
-import domain.Event;
-import domain.Question;
-import exceptions.QuestionAlreadyExist;
+import eredua.domeinua.Event;
+import eredua.domeinua.Question;
+import eredua.exceptions.QuestionAlreadyExist;
+
+
 
 public interface DataAccessInterface {
 
@@ -50,7 +52,7 @@ public interface DataAccessInterface {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	Vector<Event> getEvents(Date date);
+	List<Event> getEvents(Date date);
 
 	/**
 	 * This method retrieves from the database the dates a month for which there are events
@@ -58,7 +60,7 @@ public interface DataAccessInterface {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	Vector<Date> getEventsMonth(Date date);
+	List<Date> getEventsMonth(Date date);
 
 	
 	/**

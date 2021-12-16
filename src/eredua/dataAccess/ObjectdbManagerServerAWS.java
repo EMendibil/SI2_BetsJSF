@@ -1,9 +1,6 @@
 package eredua.dataAccess;
 
-
-import configuration.ConfigXML;
-
-
+import eredua.configuration.ConfigXML;
 
 public class ObjectdbManagerServerAWS {
 

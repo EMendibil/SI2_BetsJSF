@@ -2,10 +2,17 @@ package eredua.domeinua;
 
 import java.io.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.Entity;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 
 
@@ -20,9 +27,10 @@ public class Question implements Serializable {
 	private String question; 
 	private float betMinimum;
 	private String result;  
-	
+	@ManyToOne(targetEntity=Event.class, fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SELECT)
 	private Event event;
-
+	
 	public Question(){
 		super();
 	}

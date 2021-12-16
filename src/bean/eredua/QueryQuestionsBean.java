@@ -10,18 +10,20 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.event.SelectEvent;
 
-import businessLogic.BLFacade;
-import domain.Event;
-import domain.Question;
-import exceptions.EventFinished;
-import exceptions.QuestionAlreadyExist;
+import eredua.businessLogic.BLFacade;
+import eredua.domeinua.Event;
+import eredua.domeinua.Question;
+import eredua.exceptions.EventFinished;
+import eredua.exceptions.QuestionAlreadyExist;
+
+
 
 public class QueryQuestionsBean {
 
 	private BLFacade facadeBL; 
-	private Vector<Event> gertaerak = new Vector<Event>();
+	private List<Event> gertaerak = new Vector<Event>();
 	private Event gertaera;
-	private Vector<Question> galderak = new Vector<Question>();
+	private List<Question> galderak = new Vector<Question>();
 	private Question galdera;
 	private Date data;
 	private float minBet;
@@ -31,7 +33,7 @@ public class QueryQuestionsBean {
 		facadeBL = FacadeBean.getBusinessLogic();
 	}
 
-	public Vector<Event> getGertaerak() {
+	public List<Event> getGertaerak() {
 		return gertaerak;
 	}
 
@@ -39,7 +41,7 @@ public class QueryQuestionsBean {
 		this.gertaerak = gertaerak;
 	}
 
-	public Vector<Question> getGalderak() {
+	public List<Question> getGalderak() {
 		return galderak;
 	}
 

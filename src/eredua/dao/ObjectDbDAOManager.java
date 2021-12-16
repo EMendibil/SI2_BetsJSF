@@ -8,9 +8,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import configuration.ConfigXML;
-import domain.Event;
-import domain.Question;
+import eredua.configuration.ConfigXML;
+import eredua.domeinua.Event;
+import eredua.domeinua.Question;
+
+
 
 public class ObjectDbDAOManager implements DAOManager{
 	protected  static EntityManager  db;

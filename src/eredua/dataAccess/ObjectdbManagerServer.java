@@ -8,7 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import configuration.ConfigXML;
+import eredua.configuration.ConfigXML;
 
 import javax.swing.JTextArea;
 

@@ -1,9 +1,11 @@
 package eredua.businessLogic;
 
-import java.util.Vector;
+import java.util.List;
 
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
+import eredua.exceptions.EventFinished;
+import eredua.exceptions.QuestionAlreadyExist;
 
 import java.util.Date;
 
@@ -13,8 +15,7 @@ import java.util.Date;
 
 //import domain.Booking;
 
-import exceptions.EventFinished;
-import exceptions.QuestionAlreadyExist;
+
 
 /**
  * Interface that specifies the business logic.
@@ -33,7 +34,7 @@ public interface BLFacade  {
 	 * @throws EventFinished if current data is after data of the event
  	 * @throws QuestionAlreadyExist if the same question already exists for the event
 	 */
-	domain.Question createQuestion(Event event, String question, float betMinimum) throws EventFinished, QuestionAlreadyExist;
+	Question createQuestion(Event event, String question, float betMinimum) throws EventFinished, QuestionAlreadyExist;
 	
 	
 	/**
@@ -42,7 +43,7 @@ public interface BLFacade  {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	public Vector<domain.Event> getEvents(Date date);
+	public List<Event> getEvents(Date date);
 	
 	/**
 	 * This method retrieves from the database the dates a month for which there are events
@@ -50,7 +51,7 @@ public interface BLFacade  {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	public Vector<Date> getEventsMonth(Date date);
+	public List<Date> getEventsMonth(Date date);
 	
 	/**
 	 * This method calls the data access to initialize the database with some events and questions.

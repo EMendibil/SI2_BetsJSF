@@ -1,7 +1,7 @@
 package eredua.dao;
 
-import domain.Event;
-import domain.Question;
+import eredua.domeinua.Event;
+import eredua.domeinua.Question;
 
 public interface DAOManager {
 	public void open();

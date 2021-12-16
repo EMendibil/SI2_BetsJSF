@@ -6,8 +6,9 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import domain.Event;
-import domain.Question;
+import eredua.domeinua.Question;
+
+
 
 public class ObjectDbQuestionDAO implements Dao<Question>{
 	protected  EntityManager  db;

@@ -9,8 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
-import domain.Event;
+
 import eredua.configuration.UtilDate;
+import eredua.domeinua.Event;
 
 @SuppressWarnings("hiding")
 public class ObjectDbEventDAO implements Dao<Event> {
