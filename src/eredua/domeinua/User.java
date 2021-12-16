@@ -1,11 +1,33 @@
 package eredua.domeinua;
 
-public class User {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class User {
+	@Id 
 	private String userName;	
 	private String pasahitza;
 	private int mota; //0 balio du erabiltzaile arrunta bada eta 1 administradorea bada
-	private double dirKop;
+	private double dirKop; // erabiltzaile arruntentzat da, apustuak egiteko dirua kudeatzeko
+	
+	public User(){
+		super;
+	}
+	
+	public User(String userName, String pasahitza, int mota, double dirKop){ //Eraikitzaile hau DataAccessHibernate-n adminak sortzeko da nagusiki
+		this.userName = username;
+		this.pasahitza = pasahitza;
+		this.mota = mota;
+		this.dirKop = dirKop;
+	}
+	
+	public User(String userName, String pasahitza, double dirKop){ //Eraikitzaile hau erabiliko da aplikazioaren bidez erregistratzean
+		this.userName = username;
+		this.pasahitza = pasahitza;
+		this.mota = 0;
+		this.dirKop = dirKop;
+	}
 	
 	public String getUserName() {
 		return userName;
