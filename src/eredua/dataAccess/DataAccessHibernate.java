@@ -271,7 +271,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 			return emaitza.get(0);
 		}
 		else{
-			throw new userExistsException("Erabiltzailea ez existitzen!");
+			throw new userExistsException("Erabiltzailea ez da existitzen!");
 		}
 	}
 	
@@ -286,7 +286,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 		
 		
 		if(uRes != null){
-			//Hemen salbuespen bat egongo da
+			throw new userExistsException("Erabiltzailea jada existitzen da!")
 		}
 		db.getTransaction().begin();
 		User u = new User(userName, pasahitza);
