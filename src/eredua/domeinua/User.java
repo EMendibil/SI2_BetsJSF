@@ -22,7 +22,7 @@ public class User {
 		this.dirKop = dirKop;
 	}
 	
-	public User(String userName, String pasahitza, double dirKop){ //Eraikitzaile hau erabiliko da aplikazioaren bidez erregistratzean
+	public User(String userName, String pasahitza){ //Eraikitzaile hau erabiliko da aplikazioaren bidez erregistratzean
 		this.userName = username;
 		this.pasahitza = pasahitza;
 		this.mota = 0;
