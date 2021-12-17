@@ -25,6 +25,7 @@ import eredua.configuration.ConfigXML;
 import eredua.configuration.UtilDate;
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
+import eredua.domeinua.User;
 import eredua.exceptions.QuestionAlreadyExist;
 
 /**
@@ -102,6 +103,9 @@ public class DataAccessHibernate implements DataAccessInterface {
 			Question q4;
 			Question q5;
 			Question q6;
+			
+			User admin = new User("admin", "adminadmin", 1, 0.0); //Admin bat, QueryQuestions eta CreateQuestions-era sarbidea duena.
+			db.persist(admin);
 					
 			if (Locale.getDefault().equals(new Locale("es"))) {
 				q1=ev1.addQuestion("¿Quién ganará el partido?",1);
@@ -256,6 +260,42 @@ public class DataAccessHibernate implements DataAccessInterface {
 	 	return res;
 	}
 	
+	public boolean login (String userName, String pasahitza){
+		Session db = HibernateUtil.getSessionFactory().getCurrentSession();
+		Query qy = db.createQuery("FROM User WHERE username= :izena and pasahitza= :pasahitza");
+		qy.setParameter("izena", userName);
+		qy.setParameter("pasahitza", pasahitza);
+		List<User> emaitza = qy.list();
+		if(emaitza != null){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public User register (String userName, String pasahitza){
+		Session db = HibernateUtil.getSessionFactory().getCurrentSession();
+		db.beginTransaction();
+		
+		Query qy = db.createQuery("from User where userName= :izena");
+		qy.setParameter("izena", userName);
+		List uRes = qy.list();
+		
+		
+		
+		if(uRes != null){
+			//Hemen salbuespen bat egongo da
+		}
+		db.getTransaction().begin();
+		User u = new User(userName, pasahitza);
+		db.persist(u);
+			
+		
+		db.getTransaction().commit();
+		return u;
+	}
+		
 @Override
 public void open(){
 		
