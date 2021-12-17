@@ -12,18 +12,18 @@ public class User {
 	private double dirKop; // erabiltzaile arruntentzat da, apustuak egiteko dirua kudeatzeko
 	
 	public User(){
-		super;
+		super();
 	}
 	
 	public User(String userName, String pasahitza, int mota, double dirKop){ //Eraikitzaile hau DataAccessHibernate-n adminak sortzeko da nagusiki
-		this.userName = username;
+		this.userName = userName;
 		this.pasahitza = pasahitza;
 		this.mota = mota;
 		this.dirKop = dirKop;
 	}
 	
 	public User(String userName, String pasahitza){ //Eraikitzaile hau erabiliko da aplikazioaren bidez erregistratzean
-		this.userName = username;
+		this.userName = userName;
 		this.pasahitza = pasahitza;
 		this.mota = 0;
 		this.dirKop = dirKop;

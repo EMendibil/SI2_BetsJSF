@@ -13,5 +13,6 @@
   <property name="hibernate.hbm2ddl.auto">create</property>
   <mapping class="eredua.domeinua.Question"/>
   <mapping class="eredua.domeinua.Event"/>
+  <mapping class="eredua.domeinua.User"/>
  </session-factory>
 </hibernate-configuration>

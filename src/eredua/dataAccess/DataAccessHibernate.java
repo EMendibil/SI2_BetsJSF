@@ -27,6 +27,7 @@ import eredua.domeinua.Event;
 import eredua.domeinua.Question;
 import eredua.domeinua.User;
 import eredua.exceptions.QuestionAlreadyExist;
+import eredua.exceptions.userExistsException;
 
 /**
  * It implements the data access to the objectDb database
@@ -260,21 +261,21 @@ public class DataAccessHibernate implements DataAccessInterface {
 	 	return res;
 	}
 	
-	public boolean login (String userName, String pasahitza){
+	public User login (String userName, String pasahitza) throws userExistsException{
 		Session db = HibernateUtil.getSessionFactory().getCurrentSession();
 		Query qy = db.createQuery("FROM User WHERE username= :izena and pasahitza= :pasahitza");
 		qy.setParameter("izena", userName);
 		qy.setParameter("pasahitza", pasahitza);
 		List<User> emaitza = qy.list();
 		if(emaitza != null){
-			return true;
+			return emaitza.get(0);
 		}
 		else{
-			return false;
+			throw new userExistsException("Erabiltzailea ez existitzen!");
 		}
 	}
 	
-	public User register (String userName, String pasahitza){
+	public Boolean register (String userName, String pasahitza){
 		Session db = HibernateUtil.getSessionFactory().getCurrentSession();
 		db.beginTransaction();
 		
@@ -293,7 +294,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 			
 		
 		db.getTransaction().commit();
-		return u;
+		return true;
 	}
 		
 @Override

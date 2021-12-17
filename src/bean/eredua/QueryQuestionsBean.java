@@ -16,6 +16,7 @@ import eredua.domeinua.Event;
 import eredua.domeinua.Question;
 import eredua.exceptions.EventFinished;
 import eredua.exceptions.QuestionAlreadyExist;
+import eredua.exceptions.userExistsException;
 
 
 
@@ -29,6 +30,13 @@ public class QueryQuestionsBean {
 	private Date data;
 	private float minBet;
 	private String questionValue;
+	
+	private String userlog;
+	private String passlog;
+	
+	private String userreg;
+	private String passreg;
+
 
 	public QueryQuestionsBean() {
 		facadeBL = FacadeBean.getBusinessLogic();
@@ -131,5 +139,23 @@ public class QueryQuestionsBean {
 		facadeBL.createQuestion(this.gertaera, this.questionValue, this.minBet);
 		FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
 				new FacesMessage("Question created: " + this.questionValue));
+	}
+	
+	public String getShEvents(){
+		return "show";
+	}
+	
+	public String login() {
+		try {
+			facadeBL.login(this.userlog, this.passlog);
+		} catch (userExistsException e) {
+			e.printStackTrace();
+		}
+		
+		return this.getItzuli();
+	}
+	public String register() {
+		facadeBL.register(this.userreg, this.passreg);
+		return this.getItzuli();
 	}
 }

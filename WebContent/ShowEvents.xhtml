@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Query questions</title>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<h2>EVENT SELECTOR</h2>
+	<h:form id="nireForm">
+		<div id="queryContainer"> 
+
+				<b>Events:</b>
+					<p:dataTable id="taulaE" value="#{queryQuestionsBean.gertaerak}"
+						var="event" selectionMode="single"
+						selection="#{queryQuestionsBean.gertaera}" border="1"
+						rowKey="#{event.eventNumber}" update="mezuak :nireForm:taulaQ">
+						<p:ajax event="rowSelect"
+							listener="#{queryQuestionsBean.onEventSelect}"></p:ajax>
+						<f:facet name="header">Events:</f:facet>
+						<p:column headerText="Events #">#{event.eventNumber}</p:column>
+						<p:column headerText="Event">#{event.description}</p:column>
+					</p:dataTable>
+				<h:commandButton value="Back" action="#{queryQuestionsBean.getItzuli}"
+					style="width:300px;height:40px;margin-top:20px;" />
+				
+		</div>
+	</h:form>
+</h:body>
+</html>

@@ -8,8 +8,10 @@ import eredua.configuration.ConfigXML;
 import eredua.dataAccess.DataAccessInterface;
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
+import eredua.domeinua.User;
 import eredua.exceptions.EventFinished;
 import eredua.exceptions.QuestionAlreadyExist;
+import eredua.exceptions.userExistsException;
 
 
 /**
@@ -61,11 +63,11 @@ public class BLFacadeImplementation  implements BLFacade {
 	   
 	    //The minimum bed must be greater than 0
 		dbManager.open();
-		Question qry=null;
 		
+		Question qry=dbManager.createQuestion(event, question, betMinimum);
 	    
-		if(new Date().compareTo(event.getEventDate())>0)
-			throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
+		//if(new Date().compareTo(event.getEventDate())>0)
+		//	throw new EventFinished(ResourceBundle.getBundle("Etiquetas").getString("ErrorEventHasFinished"));
 				
 		
 		 qry=dbManager.createQuestion(event,question,betMinimum);		
@@ -120,6 +122,23 @@ public class BLFacadeImplementation  implements BLFacade {
     	dbManager.open();
 		dbManager.initializeDB();
 		dbManager.close();
+	}
+
+	@Override
+	public User login(String userlog, String passlog) throws userExistsException {
+		dbManager.open();
+		User  user=dbManager.login(userlog, passlog);
+		dbManager.close();
+		return user;
+		
+	}
+
+	@Override
+	public boolean register(String userreg, String passreg) {
+		// TODO Auto-generated method stubdbManager.open();
+		boolean  em=dbManager.register(userreg, passreg);
+		dbManager.close();
+		return em;
 	}
 
 

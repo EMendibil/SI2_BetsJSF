@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#Main.xhtml" PATH="/Main.xhtml"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Main.xhtml:0" NAME="item" PATH="/Main.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="query::#QueryQuestions.xhtml" NAME="output"
+    PATH="/QueryQuestions.xhtml" TARGET="rules:#QueryQuestions.xhtml"
+    TITLE="query" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#Main.xhtml:1" NAME="item1" PATH="/Main.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="create::#CreateQuestions.xhtml"
+    NAME="output" PATH="/CreateQuestions.xhtml"
+    TARGET="rules:#CreateQuestions.xhtml" TITLE="create" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#Main.xhtml:2" NAME="item2" PATH="/Main.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="select::#EventSelector.xhtml" NAME="output"
+    PATH="/EventSelector.xhtml" TARGET="rules:#EventSelector.xhtml"
+    TITLE="select" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#QueryQuestions.xhtml"
+  PATH="/QueryQuestions.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#QueryQuestions.xhtml:0" NAME="item"
+   PATH="/QueryQuestions.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="return::#Main.xhtml" NAME="output"
+    PATH="/Main.xhtml" TARGET="rules:#Main.xhtml" TITLE="return" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#CreateQuestions.xhtml"
+  PATH="/CreateQuestions.xhtml" SHAPE="480,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#CreateQuestions.xhtml:0" NAME="item"
+   PATH="/CreateQuestions.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="return::#Main.xhtml" NAME="output"
+    PATH="/Main.xhtml" TARGET="rules:#Main.xhtml" TITLE="return" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#EventSelector.xhtml"
+  PATH="/EventSelector.xhtml" SHAPE="496,193,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#EventSelector.xhtml:0" NAME="item"
+   PATH="/EventSelector.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="show::#ShowEvents.xhtml" NAME="output"
+    PATH="/ShowEvents.xhtml" TARGET="rules:#ShowEvents.xhtml"
+    TITLE="show" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ShowEvents.xhtml" PATH="/ShowEvents.xhtml"
+  SHAPE="256,209,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#ShowEvents.xhtml:0" NAME="item"
+   PATH="/ShowEvents.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="return::#EventSelector.xhtml" NAME="output"
+    PATH="/EventSelector.xhtml" TARGET="rules:#EventSelector.xhtml"
+    TITLE="return" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

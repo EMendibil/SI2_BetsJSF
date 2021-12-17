@@ -5,7 +5,9 @@ import java.util.List;
 
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
+import eredua.domeinua.User;
 import eredua.exceptions.QuestionAlreadyExist;
+import eredua.exceptions.userExistsException;
 
 
 
@@ -71,6 +73,10 @@ public interface DataAccessInterface {
 	 * @return true if the event contains this the questions, false in other case
 	 */
 	boolean existQuestion(Event event, String question);
+
+	User login(String userlog, String passlog) throws userExistsException;
+
+	Boolean register(String userreg, String passreg);
 
 	
 

@@ -1,7 +1,7 @@
 @charset "ISO-8859-1";
 
 body {
-	background-color: #b7e1fb;
+	background-color: #CBC3E3;
 }
 
 h2 {
@@ -15,7 +15,7 @@ p {
 }
 
 #container {
-	background: white;
+	background: grey;
 	padding: 20px;
 	border-radius: 5px;
 	width:300px;

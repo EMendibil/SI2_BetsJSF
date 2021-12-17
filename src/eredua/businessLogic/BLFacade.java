@@ -4,8 +4,10 @@ import java.util.List;
 
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
+import eredua.domeinua.User;
 import eredua.exceptions.EventFinished;
 import eredua.exceptions.QuestionAlreadyExist;
+import eredua.exceptions.userExistsException;
 
 import java.util.Date;
 
@@ -58,6 +60,12 @@ public interface BLFacade  {
 	 * It is invoked only when the option "initialize" is declared in the tag dataBaseOpenMode of resources/config.xml file
 	 */	
 	public void initializeBD();
+
+
+	User login(String userlog, String passlog) throws userExistsException;
+
+
+	boolean register(String userreg, String passreg);
 
 	
 }
