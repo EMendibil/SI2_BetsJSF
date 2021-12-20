@@ -275,7 +275,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 		}
 	}
 	
-	public Boolean register (String userName, String pasahitza){
+	public Boolean register (String userName, String pasahitza) throws userExistsException{
 		Session db = HibernateUtil.getSessionFactory().getCurrentSession();
 		db.beginTransaction();
 		
@@ -286,7 +286,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 		
 		
 		if(uRes != null){
-			throw new userExistsException("Erabiltzailea jada existitzen da!")
+			throw new userExistsException("Erabiltzailea jada existitzen da!");
 		}
 		db.getTransaction().begin();
 		User u = new User(userName, pasahitza);
