@@ -134,7 +134,7 @@ public class BLFacadeImplementation  implements BLFacade {
 	}
 
 	@Override
-	public boolean register(String userreg, String passreg) {
+	public boolean register(String userreg, String passreg) throws userExistsException {
 		// TODO Auto-generated method stubdbManager.open();
 		boolean  em=dbManager.register(userreg, passreg);
 		dbManager.close();

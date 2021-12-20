@@ -155,7 +155,12 @@ public class QueryQuestionsBean {
 		return this.getItzuli();
 	}
 	public String register() {
-		facadeBL.register(this.userreg, this.passreg);
+		try {
+			facadeBL.register(this.userreg, this.passreg);
+		} catch (userExistsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return this.getItzuli();
 	}
 }
