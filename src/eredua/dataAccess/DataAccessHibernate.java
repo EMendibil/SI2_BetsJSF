@@ -195,9 +195,9 @@ public class DataAccessHibernate implements DataAccessInterface {
 		
 		
 		Event ev = (Event)evRes.get(0);
-		
+		//if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist();
 			
-		if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
+		
 			
 		db.getTransaction().begin();
 		Question q = ev.addQuestion(question, betMinimum);

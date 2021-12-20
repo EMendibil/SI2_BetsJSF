@@ -135,8 +135,16 @@ public class QueryQuestionsBean {
 		this.questionValue = questionValue;
 	}
 
-	public void createQuestion() throws EventFinished, QuestionAlreadyExist {
-		facadeBL.createQuestion(this.gertaera, this.questionValue, this.minBet);
+	public void createQuestion() {
+		try {
+			facadeBL.createQuestion(this.gertaera, this.questionValue, this.minBet);
+		} catch (EventFinished e) {
+			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
+					new FacesMessage("Gertaera jada bukatu da."));
+		} catch (QuestionAlreadyExist e) {
+			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
+					new FacesMessage("Galdera hori jada sortuta dago."));
+		}
 		FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
 				new FacesMessage("Question created: " + this.questionValue));
 	}

@@ -23,22 +23,29 @@
 							listener="#{queryQuestionsBean.onDateSelect}"
 							update=":nireForm:mezuak :nireForm:zerrenda"></p:ajax>
 					</p:calendar>
-					<h:commandButton value="Return" action="#{queryQuestionsBean.getItzuli}"
-						style="width:300px;height:40px;margin-top:20px;" />
+					
 				</div>
 				<div id="container2">
 					<b>Mezuak:</b>
 					<h:messages id="mezuak" style="color:blue" />
+					<h:commandButton value="Return" action="#{queryQuestionsBean.getItzuli}"
+						style="width:300px;height:40px;margin-top:20px;" />
 				</div>
 			</div>
 			<div id="column">
 				<div id="container2">
-					<b>Events:</b><br></br>
-					<h:selectOneMenu id="zerrenda" value="#{queryQuestionsBean.gertaera}" converter="EventConverter">
-						<f:selectItems value="#{queryQuestionsBean.gertaerak}" />
-						<f:ajax event="change" listener="#{queryQuestionsBean.listener}"
-							render="" />
-					</h:selectOneMenu>
+					<b>Events:</b>
+					<p:dataTable id="zerrenda" value="#{queryQuestionsBean.gertaerak}"
+						var="event" selectionMode="single"
+						selection="#{queryQuestionsBean.gertaera}" border="1"
+						rowKey="#{event.eventNumber}">
+						<p:ajax event="rowSelect"
+							listener="#{queryQuestionsBean.onEventSelect}"
+							update=":nireForm:mezuak"></p:ajax>
+						<f:facet name="header">Events:</f:facet>
+						<p:column headerText="Events #">#{event.eventNumber}</p:column>
+						<p:column headerText="Event">#{event.description}</p:column>
+					</p:dataTable>
 				</div>
 				<div id="container2">
 					<b>Create question:</b>

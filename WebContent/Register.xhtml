@@ -29,9 +29,12 @@
 							<td>Min bet:</td>
 							<br></br>
 							<td><h:inputSecret id="password"
-									value="#{queryQuestionsBean.userreg}"></h:inputSecret></td>
+									value="#{queryQuestionsBean.passreg}"></h:inputSecret></td>
 						</tr>
 					</table>
+					<h:commandButton value="Register"
+						action="#{queryQuestionsBean.register}"
+						style="width:300px;height:40px;margin-top:20px;" />
 					<h:commandButton value="Register"
 						action="#{queryQuestionsBean.register}"
 						style="width:300px;height:40px;margin-top:20px;" />
