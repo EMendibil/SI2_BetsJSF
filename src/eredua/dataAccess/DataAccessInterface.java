@@ -76,7 +76,7 @@ public interface DataAccessInterface {
 
 	User login(String userlog, String passlog) throws userExistsException;
 
-	Boolean register(String userreg, String passreg) throws userExistsException;
+	User register(String userreg, String passreg) throws userExistsException;
 
 	
 

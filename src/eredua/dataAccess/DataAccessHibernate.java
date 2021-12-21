@@ -106,6 +106,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 			Question q6;
 			
 			User admin = new User("admin", "adminadmin", 1, 0.0); //Admin bat, QueryQuestions eta CreateQuestions-era sarbidea duena.
+			User erabiltzaile = new User("pertsona", "pertsonapertsona", 0, 0.0); //Erabiltzaile arrunt bat, DiruaSartu-ra soilik sarbidea duena.
 			db.persist(admin);
 					
 			if (Locale.getDefault().equals(new Locale("es"))) {
@@ -195,7 +196,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 		
 		
 		Event ev = (Event)evRes.get(0);
-		//if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist();
+		if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist();
 			
 		
 			
@@ -275,7 +276,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 		}
 	}
 	
-	public Boolean register (String userName, String pasahitza) throws userExistsException{
+	public User register (String userName, String pasahitza) throws userExistsException{
 		Session db = HibernateUtil.getSessionFactory().getCurrentSession();
 		db.beginTransaction();
 		
@@ -294,7 +295,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 			
 		
 		db.getTransaction().commit();
-		return true;
+		return u;
 	}
 		
 @Override

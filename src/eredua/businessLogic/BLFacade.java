@@ -65,7 +65,10 @@ public interface BLFacade  {
 	User login(String userlog, String passlog) throws userExistsException;
 
 
-	boolean register(String userreg, String passreg) throws userExistsException;
+	User register(String userreg, String passreg) throws userExistsException;
+
+
+	double diruaSartu(double dirKop);
 
 	
 }

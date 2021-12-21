@@ -14,6 +14,7 @@ import org.primefaces.event.SelectEvent;
 import eredua.businessLogic.BLFacade;
 import eredua.domeinua.Event;
 import eredua.domeinua.Question;
+import eredua.domeinua.User;
 import eredua.exceptions.EventFinished;
 import eredua.exceptions.QuestionAlreadyExist;
 import eredua.exceptions.userExistsException;
@@ -36,6 +37,9 @@ public class QueryQuestionsBean {
 	
 	private String userreg;
 	private String passreg;
+	
+	private double dirKop;
+	private int usMota;
 
 
 	public QueryQuestionsBean() {
@@ -155,20 +159,49 @@ public class QueryQuestionsBean {
 	
 	public String login() {
 		try {
-			facadeBL.login(this.userlog, this.passlog);
+			User u = facadeBL.login(this.userlog, this.passlog);
+			this.userlog= u.getUserName();
+			this.passlog= u.getPasahitza();
+			this.usMota= u.getMota();
+			this.dirKop= u.getDirKop();
 		} catch (userExistsException e) {
-			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
+					new FacesMessage("Izena edo pasahitza okerra da."));
 		}
 		
 		return this.getItzuli();
 	}
 	public String register() {
 		try {
-			facadeBL.register(this.userreg, this.passreg);
+			User u = facadeBL.register(this.userreg, this.passreg);
+			this.userlog= u.getUserName();
+			this.passlog= u.getPasahitza();
+			this.usMota= u.getMota();
+			this.dirKop= u.getDirKop();
 		} catch (userExistsException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
+					new FacesMessage("Erabiltzaile hori jada existitzen da."));
 		}
 		return this.getItzuli();
+	}
+	
+	public String goLogin(){
+		return "login";
+	}
+	
+	public String goRegister(){
+		return "register";
+	}
+	
+	public void diruaSartu() {
+		if(this.dirKop < 0) {
+			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
+					new FacesMessage("Erabiltzaile hori jada existitzen da."));
+		}
+		else {
+			double dirTot = facadeBL.diruaSartu(this.dirKop);
+			this.dirKop= dirTot;
+		}
+			
 	}
 }

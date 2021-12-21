@@ -7,26 +7,25 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Query questions</title>
+	<title>Login</title>
 	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
-	<h2>EVENT SELECTOR</h2>
+	<h2>LOGIN</h2>
 	<h:form id="nireForm">
 		<div id="queryContainer"> 
 
-				<b>Create question:</b>
+				<b>Sartu zure datuak:</b>
 					<table>
 						<tr>
-							<td>Question:</td>
+							<td>Username:</td>
 							<br></br>
 							<td><h:inputText id="user"
 									value="#{queryQuestionsBean.userlog}">
 								</h:inputText></td>
-							<td><h:message for="question" style="color:red" /></td>
 						</tr>
 						<tr>
-							<td>Min bet:</td>
+							<td>Password:</td>
 							<br></br>
 							<td><h:inputSecret id="password"
 									value="#{queryQuestionsBean.passlog}"></h:inputSecret></td>
@@ -35,13 +34,18 @@
 					<h:commandButton value="Login"
 						action="#{queryQuestionsBean.login}"
 						style="width:300px;height:40px;margin-top:20px;" />
+						
+					<h:commandButton value="Register"
+						action="#{queryQuestionsBean.goRegister}"
+						style="width:300px;height:40px;margin-top:20px;" />
+						
+					
 				
+		</div>
+		<div id="container2">
+					<b>Mezuak:</b>
+					<h:messages id="mezuak" style="color:blue" />
 		</div>
 	</h:form>
 </h:body>
 </html>
-
-
-
-
-

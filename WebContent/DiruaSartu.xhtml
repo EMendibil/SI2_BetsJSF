@@ -7,39 +7,31 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>Register</title>
+	<title>Dirua sartu</title>
 	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
-	<h2>REGISTER</h2>
+	<h2>DIRUA SARTU</h2>
 	<h:form id="nireForm">
 		<div id="queryContainer"> 
 
-				<b>Sartu zure datuak:</b>
+				<b>Sartu diru kopuru bat zure kontuan:</b>
 					<table>
 						<tr>
-							<td>Username:</td>
+							<td>Kopurua:</td>
 							<br></br>
 							<td><h:inputText id="user"
-									value="#{queryQuestionsBean.userreg}">
+									value="#{queryQuestionsBean.dirKop}">
 								</h:inputText></td>
 						</tr>
-						<tr>
-							<td>Password:</td>
-							<br></br>
-							<td><h:inputSecret id="password"
-									value="#{queryQuestionsBean.passreg}"></h:inputSecret></td>
-						</tr>
 					</table>
-					<h:commandButton value="Register"
-						action="#{queryQuestionsBean.register}"
+					<h:commandButton value="Dirua sartu"
+						action="#{queryQuestionsBean.diruaSartu}"
 						style="width:300px;height:40px;margin-top:20px;" />
 						
-					<h:commandButton value="Login"
+					<h:commandButton value="Log out"
 						action="#{queryQuestionsBean.goLogin}"
 						style="width:300px;height:40px;margin-top:20px;" />
-						
-					
 				
 		</div>
 		<div id="container2">

@@ -15,11 +15,11 @@ public class User {
 		super();
 	}
 	
-	public User(String userName, String pasahitza, int mota, double dirKop){ //Eraikitzaile hau DataAccessHibernate-n adminak sortzeko da nagusiki
+	public User(String userName, String pasahitza, int mota, double d){ //Eraikitzaile hau DataAccessHibernate-n adminak sortzeko da nagusiki
 		this.userName = userName;
 		this.pasahitza = pasahitza;
 		this.mota = mota;
-		this.dirKop = dirKop;
+		this.dirKop = d;
 	}
 	
 	public User(String userName, String pasahitza){ //Eraikitzaile hau erabiliko da aplikazioaren bidez erregistratzean
@@ -50,7 +50,7 @@ public class User {
 	public double getDirKop() {
 		return dirKop;
 	}
-	public void setDirKop(double dirKop) {
+	public void setDirKop(float dirKop) {
 		this.dirKop = dirKop;
 	}
 	
