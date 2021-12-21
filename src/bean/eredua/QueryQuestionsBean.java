@@ -199,7 +199,7 @@ public class QueryQuestionsBean {
 					new FacesMessage("Erabiltzaile hori jada existitzen da."));
 		}
 		else {
-			double dirTot = facadeBL.diruaSartu(this.dirKop);
+			double dirTot = facadeBL.diruaSartu(this.userlog, this.dirKop);
 			this.dirKop= dirTot;
 		}
 			

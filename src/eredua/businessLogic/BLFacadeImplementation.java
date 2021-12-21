@@ -138,6 +138,14 @@ public class BLFacadeImplementation  implements BLFacade {
 		return em;
 	}
 
+	@Override
+	public double diruaSartu(String userName, double dirKop) {
+		// TODO Auto-generated method stub
+		double  dirTot=dbManager.diruaSartu(userName, dirKop);
+		dbManager.close();
+		return dirTot;
+	}
+
 
 
 

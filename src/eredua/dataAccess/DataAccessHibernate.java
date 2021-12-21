@@ -297,6 +297,27 @@ public class DataAccessHibernate implements DataAccessInterface {
 		db.getTransaction().commit();
 		return u;
 	}
+	
+	@Override
+	public double diruaSartu(String userName, double dirKop) {
+		Session db = HibernateUtil.getSessionFactory().getCurrentSession();
+		db.beginTransaction();
+		
+		Query qy = db.createQuery("from User where userName= :izena");
+		qy.setParameter("izena", userName);
+		List<User> uRes = qy.list();
+		
+		User u = uRes.get(0);
+		double dirTot = u.getDirKop() + dirKop;
+		u.setDirKop(dirTot);
+		
+		db.getTransaction().begin();
+		db.persist(u);
+			
+		
+		db.getTransaction().commit();
+		return dirTot;
+	}
 		
 @Override
 public void open(){
@@ -352,6 +373,8 @@ public boolean existQuestion(Event event, String question) {
 		f2.delete();
 		
 	}
+
+
 	
 }
 

@@ -50,7 +50,7 @@ public class User {
 	public double getDirKop() {
 		return dirKop;
 	}
-	public void setDirKop(float dirKop) {
+	public void setDirKop(double dirKop) {
 		this.dirKop = dirKop;
 	}
 	

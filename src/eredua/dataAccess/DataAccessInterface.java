@@ -78,6 +78,8 @@ public interface DataAccessInterface {
 
 	User register(String userreg, String passreg) throws userExistsException;
 
+	double diruaSartu(String userName, double dirKop);
+
 	
 
 }
