@@ -217,7 +217,7 @@ public class QueryQuestionsBean {
 				return this.getItzuli();
 			}
 			else {
-				return
+				return this.goMoney();
 			}
 		} catch (userExistsException e) {
 			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
@@ -234,7 +234,7 @@ public class QueryQuestionsBean {
 			this.passlog= u.getPasahitza();
 			this.usMota= u.getMota();
 			this.dirKop= u.getDirKop();
-			return this.getItzuli();
+			return this.goMoney();
 		} catch (userExistsException e) {
 			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
 					new FacesMessage("Erabiltzaile hori jada existitzen da."));
@@ -249,6 +249,10 @@ public class QueryQuestionsBean {
 	
 	public String goRegister(){
 		return "register";
+	}
+	
+	public String goMoney(){
+		return "dirua";
 	}
 	
 	public void diruaSartu() {
