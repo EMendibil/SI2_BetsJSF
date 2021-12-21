@@ -2,12 +2,12 @@
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16367089113700" configfile="/BetsJSF/WebContent/WEB-INF/faces-config.xml">
   <nodes xsi:type="pageflow:PFPage" name="CreateQuestions.xhtml" x="588" y="312" id="pf16367089786891" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf16372303507620" inlinks="pf16371432833850" path="/CreateQuestions.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="QueryQuestions.xhtml" x="589" y="175" id="pf16367089786895" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf16372303507631" inlinks="pf16371432833851" path="/QueryQuestions.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="Main.xhtml" x="360" y="276" id="pf16371432833852" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf16371432833851 pf16371432833850 pf16397299002210 pf16400468960820" inlinks="pf16372303507631 pf16372303507620 pf16400420033930" path="/Main.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Main.xhtml" x="360" y="276" id="pf16371432833852" referenceLink="//@navigationRule.12/@fromViewId|" outlinks="pf16371432833851 pf16371432833850 pf16397299002210 pf16400468960820" inlinks="pf16372303507631 pf16372303507620 pf16400420033930" path="/Main.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="EventSelector.xhtml" x="338" y="468" id="pf16397299002211" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf16397299002212" inlinks="pf16397299002210 pf16397299002213" path="/EventSelector.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="ShowEvents.xhtml" x="600" y="468" id="pf16397299002214" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf16397299002213" inlinks="pf16397299002212" path="/ShowEvents.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="Login.xhtml" x="186" y="180" id="pf16400420033941" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" outlinks="pf16400420033930 pf16400440135553" inlinks="pf16400440135554 pf16400446866856 pf16400468960820" path="/Login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="Register.xhtml" x="180" y="468" id="pf16400440135555" referenceLink="//@navigationRule.11/@fromViewId|" outlinks="pf16400440135554 pf16400446866857" inlinks="pf16400440135553" path="/Register.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="DiruaSartu.xhtml" x="36" y="336" id="pf16400446866858" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" outlinks="pf16400446866856" inlinks="pf16400446866857" path="/DiruaSartu.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Login.xhtml" x="186" y="180" id="pf16400420033941" referenceLink="//@navigationRule.12/@navigationCase.0/@toViewId|" outlinks="pf16400420033930 pf16400440135553 pf16401120776060" inlinks="pf16400440135554 pf16400446866856 pf16400468960820" path="/Login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Register.xhtml" x="180" y="468" id="pf16400440135555" referenceLink="//@navigationRule.11/@fromViewId|" outlinks="pf16400440135554 pf16401120776061" inlinks="pf16400440135553" path="/Register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="DiruaSartu.xhtml" x="36" y="336" id="pf16400446866858" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" outlinks="pf16400446866856" inlinks="pf16401120776061 pf16401120776060" path="/DiruaSartu.xhtml"/>
   <links id="pf16371432833851" target="pf16367089786895" source="pf16371432833852" outcome="query"/>
   <links id="pf16371432833850" target="pf16367089786891" source="pf16371432833852" outcome="create"/>
   <links id="pf16372303507631" target="pf16371432833852" source="pf16367089786895" outcome="return"/>
@@ -19,6 +19,7 @@
   <links id="pf16400440135554" target="pf16400420033941" source="pf16400440135555" outcome="login"/>
   <links id="pf16400440135553" target="pf16400440135555" source="pf16400420033941" outcome="register"/>
   <links id="pf16400446866856" target="pf16400420033941" source="pf16400446866858" outcome="login"/>
-  <links id="pf16400446866857" target="pf16400446866858" source="pf16400440135555" outcome="return"/>
   <links id="pf16400468960820" target="pf16400420033941" source="pf16371432833852" outcome="login"/>
+  <links id="pf16401120776061" target="pf16400446866858" source="pf16400440135555" outcome="dirua"/>
+  <links id="pf16401120776060" target="pf16400446866858" source="pf16400420033941" outcome="dirua"/>
 </pageflow:Pageflow>

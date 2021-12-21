@@ -132,7 +132,7 @@ public class BLFacadeImplementation  implements BLFacade {
 
 	@Override
 	public User register(String userreg, String passreg) throws userExistsException {
-		// TODO Auto-generated method stubdbManager.open();
+		dbManager.open();
 		User  em=dbManager.register(userreg, passreg);
 		dbManager.close();
 		return em;
@@ -140,7 +140,7 @@ public class BLFacadeImplementation  implements BLFacade {
 
 	@Override
 	public double diruaSartu(String userName, double dirKop) {
-		// TODO Auto-generated method stub
+		dbManager.open();
 		double  dirTot=dbManager.diruaSartu(userName, dirKop);
 		dbManager.close();
 		return dirTot;

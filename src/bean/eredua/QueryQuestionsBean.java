@@ -33,14 +33,14 @@ public class QueryQuestionsBean {
 	private String questionValue;
 	
 
-	private String userlog;
-	private String passlog;
+	private String userlog = "";
+	private String passlog = "";
 	
-	private String userreg;
-	private String passreg;
+	private String userreg = "";
+	private String passreg = "";
 	
-	private double dirKop;
-	private int usMota;
+	private double dirKop = 0;
+	private int usMota = 0;
 
 
 	public QueryQuestionsBean() {
@@ -207,6 +207,11 @@ public class QueryQuestionsBean {
 	}
 	
 	public String login() {
+		if (this.userlog == "" || this.passlog == "") {
+			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
+					new FacesMessage("Datuak ez dira ongi bete."));
+			return "";
+		}
 		try {
 			User u = facadeBL.login(this.userlog, this.passlog);
 			this.userlog= u.getUserName();
@@ -228,6 +233,11 @@ public class QueryQuestionsBean {
 		
 	}
 	public String register() {
+		if (this.userreg == "" || this.passreg == "") {
+			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
+					new FacesMessage("Datuak ez dira ongi bete."));
+			return "";
+		}
 		try {
 			User u = facadeBL.register(this.userreg, this.passreg);
 			this.userlog= u.getUserName();
@@ -244,10 +254,16 @@ public class QueryQuestionsBean {
 	}
 	
 	public String goLogin(){
+		this.userlog= "";
+		this.passlog= "";
+		this.usMota= 0;
+		this.dirKop= 0;
 		return "login";
 	}
 	
 	public String goRegister(){
+		this.userreg= "";
+		this.passreg= "";
 		return "register";
 	}
 	
@@ -258,11 +274,13 @@ public class QueryQuestionsBean {
 	public void diruaSartu() {
 		if(this.dirKop < 0) {
 			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
-					new FacesMessage("Erabiltzaile hori jada existitzen da."));
+					new FacesMessage("Diru kopurua positiboa izan behar du."));
 		}
 		else {
 			double dirTot = facadeBL.diruaSartu(this.userlog, this.dirKop);
 			this.dirKop= dirTot;
+			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
+					new FacesMessage("Hau da zure kontuko diru kopurua: " + this.dirKop));
 		}
 			
 	}
