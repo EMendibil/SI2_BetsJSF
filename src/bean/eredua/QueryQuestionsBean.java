@@ -32,6 +32,7 @@ public class QueryQuestionsBean {
 	private float minBet;
 	private String questionValue;
 	
+
 	private String userlog;
 	private String passlog;
 	
@@ -44,6 +45,54 @@ public class QueryQuestionsBean {
 
 	public QueryQuestionsBean() {
 		facadeBL = FacadeBean.getBusinessLogic();
+	}
+	
+	public String getUserlog() {
+		return userlog;
+	}
+
+	public void setUserlog(String userlog) {
+		this.userlog = userlog;
+	}
+
+	public String getPasslog() {
+		return passlog;
+	}
+
+	public void setPasslog(String passlog) {
+		this.passlog = passlog;
+	}
+
+	public String getUserreg() {
+		return userreg;
+	}
+
+	public void setUserreg(String userreg) {
+		this.userreg = userreg;
+	}
+
+	public String getPassreg() {
+		return passreg;
+	}
+
+	public void setPassreg(String passreg) {
+		this.passreg = passreg;
+	}
+
+	public double getDirKop() {
+		return dirKop;
+	}
+
+	public void setDirKop(double dirKop) {
+		this.dirKop = dirKop;
+	}
+
+	public int getUsMota() {
+		return usMota;
+	}
+
+	public void setUsMota(int usMota) {
+		this.usMota = usMota;
 	}
 
 	public List<Event> getGertaerak() {
@@ -164,12 +213,19 @@ public class QueryQuestionsBean {
 			this.passlog= u.getPasahitza();
 			this.usMota= u.getMota();
 			this.dirKop= u.getDirKop();
+			if(u.getMota() == 1) {
+				return this.getItzuli();
+			}
+			else {
+				return
+			}
 		} catch (userExistsException e) {
 			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
 					new FacesMessage("Izena edo pasahitza okerra da."));
+			return "";
 		}
 		
-		return this.getItzuli();
+		
 	}
 	public String register() {
 		try {
@@ -178,11 +234,13 @@ public class QueryQuestionsBean {
 			this.passlog= u.getPasahitza();
 			this.usMota= u.getMota();
 			this.dirKop= u.getDirKop();
+			return this.getItzuli();
 		} catch (userExistsException e) {
 			FacesContext.getCurrentInstance().addMessage("nireForm:mezuak",
 					new FacesMessage("Erabiltzaile hori jada existitzen da."));
+			return "";
 		}
-		return this.getItzuli();
+		
 	}
 	
 	public String goLogin(){

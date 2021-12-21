@@ -264,11 +264,15 @@ public class DataAccessHibernate implements DataAccessInterface {
 	
 	public User login (String userName, String pasahitza) throws userExistsException{
 		Session db = HibernateUtil.getSessionFactory().getCurrentSession();
+		db.beginTransaction();
+		
 		Query qy = db.createQuery("FROM User WHERE username= :izena and pasahitza= :pasahitza");
 		qy.setParameter("izena", userName);
 		qy.setParameter("pasahitza", pasahitza);
 		List<User> emaitza = qy.list();
-		if(emaitza != null){
+		db.getTransaction().commit();
+		if(emaitza.size()>0){
+			
 			return emaitza.get(0);
 		}
 		else{
@@ -286,7 +290,7 @@ public class DataAccessHibernate implements DataAccessInterface {
 		
 		
 		
-		if(uRes != null){
+		if(uRes.size()>0){
 			throw new userExistsException("Erabiltzailea jada existitzen da!");
 		}
 		db.getTransaction().begin();
